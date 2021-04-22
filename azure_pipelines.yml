@@ -61,8 +61,8 @@ stages:
             ARM_CLIENT_ID: $(armClientId)
             ARM_SUBSCRIPTION_ID: $(armSubscriptionId)
             STORAGE_ACCOUNT_NAME: $(uniqueStorageName)
-            CONTAINER_NAME: '$(uniqueStorageName)cont'
-            RG_NAME: '$(uniqueStorageName)-rg'
+            CONTAINER_NAME: $(uniqueStorageName)cont
+            RG_NAME: $(uniqueStorageName)-rg
           inputs:
             command: 'init'
             backendType: 'azurerm'
