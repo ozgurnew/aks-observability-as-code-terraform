@@ -57,7 +57,7 @@ stages:
           inputs:
             command: 'init'
             backendType: 'azurerm'
-            backendServiceArm: 'Pay-As-You-Go(b5cf1a86-4412-4c53-8835-6f56a8258a58)'
+            backendServiceArm: '$(serviceConnection)'
             ensureBackend: true
             backendAzureRmResourceGroupName: 'tf-pollinate-rg'
             backendAzureRmResourceGroupLocation: 'westus2'
@@ -81,7 +81,7 @@ stages:
             provider: 'azurerm'
             command: 'plan'
             commandOptions: '-out=tfplan -input=false -var-file=$(Pipeline.Workspace)/tfvars/terraform.tfvars'
-            environmentServiceNameAzureRM: 'Pay-As-You-Go(b5cf1a86-4412-4c53-8835-6f56a8258a58)'
+            environmentServiceNameAzureRM: '$(serviceConnection)'
         - publish: ./
           artifact: 'terraform-archive'
           displayName: Publish Terraform archive
@@ -115,7 +115,7 @@ stages:
           inputs:
             command: 'init'
             backendType: 'azurerm'
-            backendServiceArm: 'Pay-As-You-Go(b5cf1a86-4412-4c53-8835-6f56a8258a58)'
+            backendServiceArm: '$(serviceConnection)'
             ensureBackend: true
             backendAzureRmResourceGroupName: 'tf-pollinate-rg'
             backendAzureRmResourceGroupLocation: 'westus2'
@@ -128,4 +128,4 @@ stages:
             provider: 'azurerm'
             command: 'apply'
             commandOptions: '-var-file=$(Pipeline.Workspace)/tfvars/terraform.tfvars'
-            environmentServiceNameAzureRM: 'Pay-As-You-Go(b5cf1a86-4412-4c53-8835-6f56a8258a58)'
+            environmentServiceNameAzureRM: '$(serviceConnection)'
